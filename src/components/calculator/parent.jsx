@@ -21,6 +21,10 @@ const StyledDiv = styled.div`
     ${({ theme, disabled }) =>
       disabled ? "null" : theme.colors.shadow.primary};
   font-size: 1.2rem;
+
+  @media only screen and (max-width: 600px) {
+    margin: 0px;
+  }
 `;
 
 const Calculator = () => {

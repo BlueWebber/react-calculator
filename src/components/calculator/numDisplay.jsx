@@ -13,6 +13,10 @@ const StyledDiv = styled.div`
   & > :first-child {
     margin-top: auto;
   }
+
+  @media only screen and (max-width: 600px) {
+    height: 40vh;
+  }
 `;
 
 const NumDisplay = () => {

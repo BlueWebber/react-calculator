@@ -14,6 +14,10 @@ const Container = styled.div`
   grid-template-columns: repeat(6, auto);
   grid-template-rows: repeat(4, 50px);
   grid-gap: 5px;
+
+  @media only screen and (max-width: 600px) {
+    grid-template-rows: repeat(4, 70px);
+  }
 `;
 
 const Keyboard = () => {

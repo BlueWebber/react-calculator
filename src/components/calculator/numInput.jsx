@@ -38,6 +38,12 @@ const InvisibleButton = styled.button`
   position: absolute;
 `;
 
+const isMobile = () => {
+  return !!/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+    navigator.userAgent
+  );
+};
+
 const NumInput = () => {
   const [state, dispatch] = useCalculatorProvider();
   const inputRef = React.useRef();
@@ -54,14 +60,6 @@ const NumInput = () => {
       { input: isResult && !isNaN(state.input) ? val.slice(-1) : val },
       dispatch
     );
-    /*
-    dispatch({
-      type: actionTypes.changeInput,
-      payload: {
-        input: isResult && !isNaN(state.input) ? val.slice(-1) : val,
-      },
-    });
-    */
   };
 
   const isResult = Array.isArray(state.input);
@@ -72,7 +70,7 @@ const NumInput = () => {
         <Input
           ref={inputRef}
           type="text"
-          onBlur={() => inputRef.current.focus()}
+          onBlur={isMobile() ? () => inputRef.current.focus() : undefined}
           value={isResult ? state.input[0] : state.input}
           onChange={({ target: { value } }) => handleChange(value)}
           bold={isResult}
