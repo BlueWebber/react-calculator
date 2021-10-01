@@ -11,6 +11,7 @@ function App() {
       <main>
         <Calculator />
       </main>
+      <footer>Made with ❤️ by BlueForced</footer>
     </ThemeProvider>
   );
 }

@@ -11,13 +11,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    padding: 0;
-    margin: 0.3rem;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     line-height: 1.5;
     font-size: 16px;
     color: ${({ theme }) => theme.colors.text.primary};
-    margin: auto;
+  }
+
+  footer {
+   position: absolute;
+   bottom: 0;
+   width: 100%;
+   height: 20px;
+   text-align: center;
+   padding-bottom: 5px;
   }
 
   main {
