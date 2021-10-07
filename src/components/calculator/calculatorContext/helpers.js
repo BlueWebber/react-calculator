@@ -18,7 +18,7 @@ const calculateResult = ({ input, results }, dispatch) => {
     if (result === "Infinity") {
       dispatch({
         type: actionTypes.setError,
-        payload: { error: "Overflow: the result couldn’t be calculated" },
+        payload: { error: "Overflow: result couldn't be calculated" },
       });
       return dispatch({
         type: actionTypes.resolveCalculation,

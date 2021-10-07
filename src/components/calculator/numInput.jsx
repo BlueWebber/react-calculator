@@ -43,6 +43,13 @@ const InvisibleButton = styled.button`
   position: absolute;
 `;
 
+const ErrorLabel = styled.label`
+  text-align: left;
+  @media only screen and (max-height: 600px) {
+    font-size: 90%;
+  }
+`;
+
 const NumInput = () => {
   const [state, dispatch] = useCalculatorProvider();
   const inputRef = React.useRef();
@@ -83,7 +90,7 @@ const NumInput = () => {
         />
         <InvisibleButton type="submit" />
       </Form>
-      {state.error && <label>{state.error}</label>}
+      {state.error && <ErrorLabel>{state.error}</ErrorLabel>}
     </StyledDiv>
   );
 };
