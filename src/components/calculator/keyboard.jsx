@@ -10,14 +10,17 @@ import {
 
 const Container = styled.div`
   display: grid;
-  flex-grow: 1;
   grid-template-columns: repeat(6, auto);
   grid-template-rows: repeat(4, 50px);
   grid-gap: 5px;
 
-  @media only screen and (max-width: 600px) {
-    grid-template-rows: repeat(4, 70px);
+  @media only screen and (max-height: 600px) {
+    grid-template-rows: repeat(4, 40px);
   }
+`;
+
+const Big = styled.label`
+  font-size: 110%;
 `;
 
 const Keyboard = () => {
@@ -32,56 +35,87 @@ const Keyboard = () => {
       <CalculatorButton onClick={() => addChar("7")}>7</CalculatorButton>
       <CalculatorButton onClick={() => addChar("8")}>8</CalculatorButton>
       <CalculatorButton onClick={() => addChar("9")}>9</CalculatorButton>
-      <CalculatorButton onClick={() => addChar("÷")} tooltip="Divide [/]">
+      <CalculatorButton
+        onClick={() => addChar("÷")}
+        tooltip="Divide"
+        shortcut="/"
+      >
         ÷
       </CalculatorButton>
       <CalculatorButton
         onClick={() => undoAction(state, dispatch)}
-        tooltip="Undo [Ctrl+Z]"
+        tooltip="Undo"
+        shortcut="Ctrl+Z"
       >
-        <big>⎌</big>
+        <Big>⎌</Big>
       </CalculatorButton>
       <CalculatorButton
         onClick={() => dispatch({ type: actionTypes.clearInput })}
-        tooltip="Clear Display [Escape]"
+        tooltip="Clear Display"
+        shortcut="Escape"
       >
         C
       </CalculatorButton>
       <CalculatorButton onClick={() => addChar("4")}>4</CalculatorButton>
       <CalculatorButton onClick={() => addChar("5")}>5</CalculatorButton>
       <CalculatorButton onClick={() => addChar("6")}>6</CalculatorButton>
-      <CalculatorButton onClick={() => addChar("×")} tooltip="Multiply [*]">
+      <CalculatorButton
+        onClick={() => addChar("×")}
+        tooltip="Multiply"
+        shortcut="*"
+      >
         ×
       </CalculatorButton>
-      <CalculatorButton onClick={() => addChar("(")} tooltip="Start Group [(]">
+      <CalculatorButton
+        onClick={() => addChar("(")}
+        tooltip="Start Group"
+        shortcut="("
+      >
         (
       </CalculatorButton>
-      <CalculatorButton onClick={() => addChar(")")} tooltip="End Group [)]">
+      <CalculatorButton
+        onClick={() => addChar(")")}
+        tooltip="End Group"
+        shortcut=")"
+      >
         )
       </CalculatorButton>
       <CalculatorButton onClick={() => addChar("1")}>1</CalculatorButton>
       <CalculatorButton onClick={() => addChar("2")}>2</CalculatorButton>
       <CalculatorButton onClick={() => addChar("3")}>3</CalculatorButton>
-      <CalculatorButton onClick={() => addChar("-")} tooltip="Subtract [-]">
+      <CalculatorButton
+        onClick={() => addChar("-")}
+        tooltip="Subtract"
+        shortcut="-"
+      >
         -
       </CalculatorButton>
-      <CalculatorButton onClick={() => addChar("²")} tooltip="Square [Ctrl+2]">
+      <CalculatorButton
+        onClick={() => addChar("²")}
+        tooltip="Square"
+        shortcut="Ctrl+2"
+      >
         <i>
           x<sup>2</sup>
         </i>
       </CalculatorButton>
       <CalculatorButton
         onClick={() => addChar("√(")}
-        tooltip="Square root [Ctrl+R]"
+        tooltip="Square root"
+        shortcut="Ctrl+R"
       >
         √
       </CalculatorButton>
       <CalculatorButton onClick={() => addChar("0")}>0</CalculatorButton>
       <CalculatorButton onClick={() => addChar(".")}>.</CalculatorButton>
-      <CalculatorButton onClick={() => addChar("%")} tooltip="Percentage [%]">
+      <CalculatorButton
+        onClick={() => addChar("%")}
+        tooltip="Percentage"
+        shortcut="%"
+      >
         %
       </CalculatorButton>
-      <CalculatorButton onClick={() => addChar("+")} tooltip="Add [+]">
+      <CalculatorButton onClick={() => addChar("+")} tooltip="Add" shortcut="+">
         +
       </CalculatorButton>
       <CalculatorButton
@@ -89,6 +123,7 @@ const Keyboard = () => {
         column={{ start: 5, end: 2 }}
         type="success"
         tooltip="Calculate Result"
+        shortcut="Enter"
       >
         =
       </CalculatorButton>

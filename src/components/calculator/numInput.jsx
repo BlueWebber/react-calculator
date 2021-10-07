@@ -5,6 +5,7 @@ import {
   calculateResult,
   changeInput,
 } from "./calculatorContext";
+import { useIsMobile } from "../../context/isMobile";
 
 const StyledDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.appBackground.mid};
@@ -17,6 +18,10 @@ const StyledDiv = styled.div`
   padding: 10px;
   flex-direction: column;
   justify-content: space-between;
+
+  @media only screen and (max-height: 600px) {
+    min-height: 2.6rem;
+  }
 `;
 
 const Form = styled.form`
@@ -38,17 +43,16 @@ const InvisibleButton = styled.button`
   position: absolute;
 `;
 
-const isMobile = () => {
-  return !!/Mobile|Android|iP(hone|od)|IEMobile|BlackBerry|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
-    navigator.userAgent
-  );
-};
-
 const NumInput = () => {
   const [state, dispatch] = useCalculatorProvider();
   const inputRef = React.useRef();
+  const isMobile = useIsMobile();
 
-  React.useEffect(() => inputRef.current.focus(), []);
+  React.useLayoutEffect(() => {
+    if (isMobile) {
+      inputRef.current.scrollLeft = inputRef.current.scrollWidth;
+    }
+  }, [isMobile, state.input]);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +61,7 @@ const NumInput = () => {
 
   const handleChange = (val) => {
     changeInput(
-      { input: isResult && !isNaN(state.input) ? val.slice(-1) : val },
+      { input: isResult && !isNaN(val) ? val.slice(-1) : val },
       dispatch
     );
   };
@@ -66,11 +70,13 @@ const NumInput = () => {
 
   return (
     <StyledDiv>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onSubmit} spellCheck={false}>
         <Input
           ref={inputRef}
           type="text"
-          onBlur={isMobile() ? () => inputRef.current.focus() : undefined}
+          autoFocus={true}
+          readOnly={isMobile}
+          onBlur={!isMobile ? () => inputRef.current.focus() : null}
           value={isResult ? state.input[0] : state.input}
           onChange={({ target: { value } }) => handleChange(value)}
           bold={isResult}

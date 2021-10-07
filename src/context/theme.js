@@ -6,7 +6,24 @@ const ThemeContext = React.createContext();
 ThemeContext.displayName = "ThemeContext";
 
 const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = React.useState("dark");
+  const isReady = React.useRef(false);
+
+  const [theme, setTheme] = React.useState(
+    () =>
+      localStorage.getItem("theme") ||
+      (window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light")
+  );
+
+  React.useEffect(() => {
+    if (isReady.current) {
+      localStorage.setItem("theme", theme);
+    } else {
+      isReady.current = true;
+    }
+  }, [theme]);
+
   return (
     <ThemeContext.Provider value={[theme, setTheme]}>
       <StyledThemeProvider theme={theme === "dark" ? darkTheme : lightTheme}>

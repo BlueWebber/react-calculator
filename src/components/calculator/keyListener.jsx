@@ -20,6 +20,11 @@ const KeyListener = ({ children }) => {
 
   React.useEffect(() => {
     function KeyPress(e) {
+      if (e.keyCode === 8) {
+        if (!Array.isArray(state.input)) return;
+        e.preventDefault();
+        dispatch({ type: actionTypes.decrementInput });
+      }
       if (e.keyCode === 13) {
         e.preventDefault();
         calculateResult(state, dispatch);
@@ -64,7 +69,7 @@ const KeyListener = ({ children }) => {
     };
   }, []);
 
-  return <>{children}</>;
+  return children;
 };
 
 export default KeyListener;

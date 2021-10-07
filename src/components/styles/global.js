@@ -2,12 +2,30 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   * {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
   }
 
   :root {
     background-color: ${({ theme }) => theme.colors.appBackground.main};
+  }
+
+  html, body, #root {
+    @media only screen and (max-width: 600px), 
+      only screen and (max-height: 700px) {
+      height: 100%;
+    };
+  }
+
+  main {
+    @media only screen and (max-width: 600px) {
+      height: 85%;
+      margin-top: 5px;
+    }
+    @media only screen and (max-height: 600px) {
+      height: 97%;
+      padding-top: 5px;
+    }
   }
 
   body {
@@ -15,15 +33,6 @@ const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     font-size: 16px;
     color: ${({ theme }) => theme.colors.text.primary};
-  }
-
-  footer {
-   position: absolute;
-   bottom: 0;
-   width: 100%;
-   height: 20px;
-   text-align: center;
-   padding-bottom: 5px;
   }
 
   main {
@@ -35,6 +44,13 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: ${({ theme }) => theme.colors.text.primary};
     text-decoration: none;
+  }
+
+  button {
+    transition: 0.15s ease-in-out;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   ::-webkit-scrollbar {

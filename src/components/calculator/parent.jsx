@@ -14,16 +14,23 @@ const StyledDiv = styled.div`
   flex-grow: 1;
   justify-content: center;
   text-align: center;
-  margin: 30px;
+  z-index: 10;
+  margin: 30px 0;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0px 0px 7px 1px
     ${({ theme, disabled }) =>
       disabled ? "null" : theme.colors.shadow.primary};
   font-size: 1.2rem;
+  max-width: 90vw;
 
-  @media only screen and (max-width: 600px) {
-    margin: 0px;
+  @media only screen and (max-width: 600px),
+    only screen and (max-height: 600px) {
+    margin: 0;
+    padding: 0;
+    background-color: ${({ theme }) => theme.colors.appBackground.main};
+    box-shadow: none;
+    max-width: 98vw;
   }
 `;
 

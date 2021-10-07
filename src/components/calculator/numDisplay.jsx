@@ -14,8 +14,9 @@ const StyledDiv = styled.div`
     margin-top: auto;
   }
 
-  @media only screen and (max-width: 600px) {
-    height: 40vh;
+  @media only screen and (max-width: 600px),
+    only screen and (max-height: 700px) {
+    flex-grow: 1;
   }
 `;
 
@@ -27,8 +28,8 @@ const NumDisplay = () => {
   }, [results]);
   return (
     <StyledDiv>
-      {results.map(([input, result, key]) => (
-        <CalcResult key={key} input={input} result={result} />
+      {results.map(([input, result, key, key1]) => (
+        <CalcResult key={key} ids={[key, key1]} input={input} result={result} />
       ))}
       <div ref={endRef} />
     </StyledDiv>

@@ -1,18 +1,23 @@
 import ReactTooltip from "react-tooltip";
 import { useTheme } from "styled-components";
+import { useIsMobile } from "../../context/isMobile";
 
-const Tooltip = ({ tooltip }) => {
+const Tooltip = ({ children, id }) => {
   const theme = useTheme();
+  const isMobile = useIsMobile();
+
   return (
     <ReactTooltip
-      id={tooltip}
+      id={id || children}
       place="bottom"
       effect="solid"
       arrowColor="transparent"
       backgroundColor={theme.colors.tooltip}
+      textColor={theme.colors.text.tooltip}
       offset={{ top: 7 }}
+      globalEventOff={isMobile ? "click" : undefined}
     >
-      {tooltip}
+      {children}
     </ReactTooltip>
   );
 };

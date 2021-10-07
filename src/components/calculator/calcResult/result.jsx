@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import React from "react";
+import LabelTooltip from "./labelTooltip";
 
 const StyledDiv = styled.div`
   background-color: ${({ theme }) => theme.colors.appBackground.darkMid};
   display: flex;
+  flex-grow: 0;
   border-top: 1px solid ${({ theme }) => theme.colors.border.mid};
   padding: 5px 20px;
   justify-content: space-between;
@@ -11,22 +13,19 @@ const StyledDiv = styled.div`
 
 const SecondaryLabel = styled.label`
   color: ${({ theme }) => theme.colors.text.secondary};
-  margin-left: 15vw;
+  margin-left: 10vw;
+  margin-right: 5vw;
 `;
 
-const CalcResult = ({ input, result }) => {
-  if (input === "5") {
-    throw new Error("aw snap");
-  }
-
+const CalcResult = ({ input, result, ids }) => {
   return (
-    <div>
-      <StyledDiv>
-        <label>{input}</label>
-        <SecondaryLabel>=</SecondaryLabel>
-        <label>{result}</label>
-      </StyledDiv>
-    </div>
+    <StyledDiv>
+      <LabelTooltip id={ids[0]}>{input}</LabelTooltip>
+      <SecondaryLabel>=</SecondaryLabel>
+      <LabelTooltip id={ids[1]} isAdd={true}>
+        {result}
+      </LabelTooltip>
+    </StyledDiv>
   );
 };
 

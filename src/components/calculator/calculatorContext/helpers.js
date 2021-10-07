@@ -2,6 +2,7 @@ import actionTypes from "./actionTypes";
 import { evaluateResult } from "./evaluator";
 
 const calculateResult = ({ input, results }, dispatch) => {
+  if (!input) return;
   if (Array.isArray(input)) {
     return dispatch({
       type: actionTypes.undoAction,
@@ -70,6 +71,7 @@ const addChar = ({ input, char }, dispatch) => {
       });
     }
   }
+
   isArray && !isNaN(char)
     ? dispatch({ type: actionTypes.changeInput, payload: { input: char } })
     : dispatch({ type: actionTypes.incrementInput, payload: { char } });
@@ -84,6 +86,7 @@ const changeInput = ({ input }, dispatch) => {
       payload: { input: input.slice(0, -1) + "^" },
     });
   }
+
   dispatch({
     type: actionTypes.changeInput,
     payload: {

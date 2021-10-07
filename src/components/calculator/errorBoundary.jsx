@@ -27,10 +27,8 @@ class CalculatorErrorBoundary extends React.Component {
     this.state = { hasError: false };
   }
 
-  componentDidCatch() {
-    this.setState({
-      hasError: true,
-    });
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
   }
 
   render() {

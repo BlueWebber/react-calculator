@@ -10,21 +10,10 @@ export const darkTheme = {
     text: {
       primary: "rgba(232, 230, 227, 0.95)",
       secondary: "#afafaf",
-      button: "rgba(232, 230, 227, 0.95)",
-      highlight: "#715b34",
-      hover: {
-        danger: "rgba(232, 230, 227, 0.95)",
-      },
-    },
-    link: {
-      hover: {
-        primary: "rgba(232, 230, 227, 0.75)",
-        post: "#ed602b",
-      },
+      tooltip: "white",
     },
     shadow: {
       primary: "rgba(0, 0, 0, 0.2)",
-      input: "rgba(86, 86, 255, 0.5);",
     },
     button: {
       primary: "#484848",
@@ -42,16 +31,18 @@ export const darkTheme = {
         success: "#0b6318",
         secondary: "rgb(0, 82, 171)",
       },
+      text: {
+        primary: "rgba(232, 230, 227, 0.95)",
+        secondary: "white",
+        success: "white",
+      },
     },
     border: {
       primary: "#000000",
       mid: "#343434",
-      warning: "rgb(255, 15, 15)",
     },
     nav: "#1b1e1f",
-    warning: "rgba(255, 15, 15, 0.4)",
     scrollbar: "#666666",
-    paginationHover: "#27282a",
     tooltip: "black",
   },
 };
@@ -61,21 +52,46 @@ export const lightTheme = {
   colors: {
     ...darkTheme.colors,
     appBackground: {
+      ...darkTheme.colors.appBackground,
       main: "#dedede",
-      dark: "#ffffff",
+      dark: "#c9c9c9",
+      mid: "#ffffff",
+      darkMid: "#f3f3f3",
     },
     text: {
       ...darkTheme.colors.text,
       primary: "#313131",
       secondary: "#575757",
-      buttonT: "rgba(232, 230, 227, 0.95)",
     },
     button: {
       ...darkTheme.colors.button,
-      secondaryButton: "rgba(123, 134, 140)",
+      primary: "#fcfcfc",
+      success: "#11a428",
+      hover: {
+        ...darkTheme.colors.button.hover,
+        primary: "#ededed",
+        success: "#0f9925",
+      },
+      active: {
+        ...darkTheme.colors.button.active,
+        primary: "#dbdbdb",
+        success: "#0c7d1e",
+      },
+      text: {
+        ...darkTheme.colors.button.text,
+        primary: "#313131",
+      },
     },
-    nav: "#ffffff",
-    paginationHover: "#c4c4c4",
+    border: {
+      ...darkTheme.colors.border,
+      primary: "#9e9e9e",
+      mid: "#bababa",
+    },
+    shadow: {
+      ...darkTheme.colors.shadow,
+      primary: "#ababab",
+    },
+    nav: "#e8e8e8",
     scrollbar: "#6d7a7a",
   },
 };

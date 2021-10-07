@@ -51,7 +51,12 @@ function reducer(state, action) {
         input: [action.payload.result],
         results: [
           ...state.results,
-          [state.input, action.payload.result, JSON.stringify(new Date())],
+          [
+            state.input,
+            action.payload.result,
+            Math.random().toString(),
+            Math.random().toString(),
+          ],
         ],
         inputHistory: [
           ...state.inputHistory.slice(0, state.actionIndex + 1),
