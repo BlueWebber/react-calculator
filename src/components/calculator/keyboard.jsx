@@ -11,11 +11,17 @@ import {
 const Container = styled.div`
   display: grid;
   grid-template-columns: repeat(6, auto);
-  grid-template-rows: repeat(4, 50px);
+  grid-template-rows: repeat(4, minmax(37px, 50px));
   grid-gap: 5px;
+  resize: vertical;
+  overflow: auto;
+  max-height: 215px;
+  min-height: 163px;
 
   @media only screen and (max-height: 600px) {
-    grid-template-rows: repeat(4, 40px);
+    grid-template-rows: repeat(4, minmax(37px, 40px));
+    max-height: 175px;
+    height: 175px;
   }
 `;
 
