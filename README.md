@@ -9,5 +9,5 @@ You can visit one of the links below to try it out for yourself.
 * Supports undoing and redoing steps
 
 ## Links
-https://blueforced.github.io/react-calculator/
-https://react-gnome-calculator.herokuapp.com/
+* https://blueforced.github.io/react-calculator/
+* https://react-gnome-calculator.herokuapp.com/
