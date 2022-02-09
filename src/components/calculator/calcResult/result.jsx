@@ -2,13 +2,10 @@ import styled from "styled-components";
 import React from "react";
 import LabelTooltip from "./labelTooltip";
 
-const StyledDiv = styled.div`
+const StyledDiv = styled.tr`
   background-color: ${({ theme }) => theme.colors.appBackground.darkMid};
-  display: flex;
-  flex-grow: 0;
-  border-top: 1px solid ${({ theme }) => theme.colors.border.mid};
-  padding: 5px 20px;
   justify-content: space-between;
+  border-top: 1px solid ${({ theme }) => theme.colors.border.mid};
 `;
 
 const SecondaryLabel = styled.label`
@@ -17,12 +14,20 @@ const SecondaryLabel = styled.label`
   margin-right: 5vw;
 `;
 
+const MaxWidthTd = styled.td`
+  width: 100%;
+`;
+
 const CalcResult = ({ input, result, ids }) => {
   return (
     <StyledDiv>
-      <LabelTooltip id={ids[0]}>{input}</LabelTooltip>
-      <SecondaryLabel>=</SecondaryLabel>
-      <LabelTooltip id={ids[1]} isAdd={true}>
+      <LabelTooltip id={ids[0]} position="left">
+        {input}
+      </LabelTooltip>
+      <MaxWidthTd>
+        <SecondaryLabel>=</SecondaryLabel>
+      </MaxWidthTd>
+      <LabelTooltip id={ids[1]} isAdd={true} position="right">
         {result}
       </LabelTooltip>
     </StyledDiv>
