@@ -3,7 +3,7 @@ import CalcResult from "./calcResult";
 import { useCalculatorProvider } from "./calculatorContext";
 import React from "react";
 
-const StyledDiv = styled.table`
+const StyledTable = styled.table`
   background-color: ${({ theme }) => theme.colors.appBackground.darkMid};
   overflow-y: auto;
   display: flex;
@@ -28,19 +28,21 @@ const NumDisplay = () => {
     endRef.current.scrollIntoView();
   }, [results]);
   return (
-    <StyledDiv>
-      <tbody>
-        {results.map(([input, result, key, key1]) => (
-          <CalcResult
-            key={key}
-            ids={[key, key1]}
-            input={input}
-            result={result}
-          />
-        ))}
-        <div ref={endRef} />
-      </tbody>
-    </StyledDiv>
+    <>
+      <StyledTable>
+        <tbody>
+          {results.map(([input, result, key, key1]) => (
+            <CalcResult
+              key={key}
+              ids={[key, key1]}
+              input={input}
+              result={result}
+            />
+          ))}
+          <tr ref={endRef} />
+        </tbody>
+      </StyledTable>
+    </>
   );
 };
 

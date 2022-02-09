@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 import LabelTooltip from "./labelTooltip";
 
-const StyledDiv = styled.tr`
+const StyledTableRow = styled.tr`
   background-color: ${({ theme }) => theme.colors.appBackground.darkMid};
   justify-content: space-between;
   border-top: 1px solid ${({ theme }) => theme.colors.border.mid};
@@ -20,7 +20,7 @@ const MaxWidthTd = styled.td`
 
 const CalcResult = ({ input, result, ids }) => {
   return (
-    <StyledDiv>
+    <StyledTableRow>
       <LabelTooltip id={ids[0]} position="left">
         {input}
       </LabelTooltip>
@@ -30,7 +30,7 @@ const CalcResult = ({ input, result, ids }) => {
       <LabelTooltip id={ids[1]} isAdd={true} position="right">
         {result}
       </LabelTooltip>
-    </StyledDiv>
+    </StyledTableRow>
   );
 };
 
