@@ -1,7 +1,7 @@
 # React Calculator
 A calculator similar to gnome desktop environment's default calculator. Implemented in React JS. 
 Uses styled-components for styling (no component libraries).
-You can visit one of the links below to try it out for yourself.
+You can visit it and try it out for yourself with the link below.
 
 ## Key features
 * Supports all basic features of a calculator
@@ -12,4 +12,3 @@ You can visit one of the links below to try it out for yourself.
 
 ## Links
 * https://blueforced.github.io/react-calculator/
-* https://react-gnome-calculator.herokuapp.com/
