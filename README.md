@@ -11,4 +11,4 @@ You can visit it and try it out for yourself with the link below.
 * Supports keyboard shortcuts
 
 ## Links
-* https://blueforced.github.io/react-calculator/
+* https://bluewebber.github.io/react-calculator/
